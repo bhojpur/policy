@@ -33,5 +33,5 @@ var (
 
 const (
 	// VERSION represent Bhojpur Policy - Security Framework version.
-	VERSION = "0.0.2"
+	VERSION = "0.0.3"
 )
