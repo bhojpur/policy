@@ -146,7 +146,7 @@ func TestGetPolicyAPI(t *testing.T) {
 }
 
 func TestModifyPolicyAPI(t *testing.T) {
-	e, _ := NewEnforcer("examples/rbac_model.conf", "examples/rbac_policy.csv")
+	e, _ := NewEnforcer("../../examples/rbac_model.conf", "../../examples/rbac_policy.csv")
 
 	testGetPolicy(t, e, [][]string{
 		{"alice", "data1", "read"},

@@ -233,7 +233,7 @@ func TestMatcherUsingInOperatorBracket(t *testing.T) {
 }
 
 func TestReloadPolicy(t *testing.T) {
-	e, _ := NewEnforcer("../../examples/rbac_model.conf", "examples/rbac_policy.csv")
+	e, _ := NewEnforcer("../../examples/rbac_model.conf", "../../examples/rbac_policy.csv")
 
 	_ = e.LoadPolicy()
 	testGetPolicy(t, e, [][]string{{"alice", "data1", "read"}, {"bob", "data2", "write"}, {"data2_admin", "data2", "read"}, {"data2_admin", "data2", "write"}})

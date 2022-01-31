@@ -35,7 +35,7 @@ func contains(arr []string, target string) bool {
 }
 
 func TestBhojpurJsGetPermissionForUserOld(t *testing.T) {
-	e, err := NewEnforcer("examples/rbac_model.conf", "examples/rbac_policy.csv")
+	e, err := NewEnforcer("../../examples/rbac_model.conf", "../../examples/rbac_policy.csv")
 	if err != nil {
 		panic(err)
 	}
