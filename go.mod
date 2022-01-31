@@ -3,6 +3,8 @@ module github.com/bhojpur/policy
 go 1.17
 
 require (
+	github.com/Knetic/govaluate v3.0.0+incompatible
+	github.com/golang/mock v1.6.0
 	github.com/lib/pq v1.10.4
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.3.0

@@ -46,7 +46,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/bhojpur/logger/pkg/log"
+	log "github.com/bhojpur/policy/pkg/engine"
 )
 
 // This is a list of predefined roles. Applications are free
