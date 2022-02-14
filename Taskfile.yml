@@ -14,6 +14,7 @@ tasks:
         cmds:
         - GOFLAGS=-mod=mod go build -o bin/policyctl client.go 
         - GOFLAGS=-mod=mod go build -o bin/policysvr server.go 
+        - GOFLAGS=-mod=mod go build -o bin/policydbg internal/main.go  
 
     build-desktop:
         desc: Build the desktop application for current OS
