@@ -32,7 +32,7 @@ var verbose bool
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "policy",
+	Use:   "policysvr",
 	Short: "Bhojpur Policy is an access rules processing engine powered by Kubernetes",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		if verbose {

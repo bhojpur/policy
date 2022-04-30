@@ -1,0 +1,68 @@
+project_name: policy
+before:
+  hooks:
+    - go mod tidy
+dist: release
+source:
+  enabled: true
+  name_template: '{{ .ProjectName }}-{{ .Tag }}-source'
+checksum:
+  name_template: '{{ .ProjectName }}-{{ .Tag }}-checksums.txt'
+builds:
+  - id: policyctl
+    env:
+      - CGO_ENABLED=0
+    main: client.go
+    binary: policyctl
+    ldflags:
+      - -s -w
+      - -X "github.com/bhojpur/policy/pkg/version.Version={{.Version}}-{{.ShortCommit}}"
+      - -X "github.com/bhojpur/policy/pkg/version.BuildTime={{ time "2006-01-02 15:04:05 MST" }}"
+      - -X "github.com/bhojpur/policy/pkg/version.BuildCommit={{ .FullCommit }}"
+  - id: policysvr
+    env:
+      - CGO_ENABLED=0
+    main: server.go
+    binary: policysvr
+    ldflags:
+      - -s -w
+      - -X "github.com/bhojpur/policy/pkg/version.Version={{.Version}}-{{.ShortCommit}}"
+      - -X "github.com/bhojpur/policy/pkg/version.BuildTime={{ time "2006-01-02 15:04:05 MST" }}"
+      - -X "github.com/bhojpur/policy/pkg/version.BuildCommit={{ .FullCommit }}"
+archives:
+  - id: policyctl
+    files:
+    - "none*"
+    format: binary # this removes the tar of the archives, leaving the binaries alone
+    name_template: policyctl-{{ .Tag }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
+    builds:
+    - policyctl
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      386: i386
+      amd64: x86_64
+  - id: policysvr
+    files:
+    - "none*"
+    format: binary # this removes the tar of the archives, leaving the binaries alone
+    name_template: policysvr-{{ .Tag }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}
+    builds:
+    - policysvr
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      386: i386
+      amd64: x86_64
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^Merge pull request'
+release:
+  prerelease: auto
+  header: |
+    Bhojpur Policy is a powerful and efficient access control framework that provides
+    support for enforcing authorization based on various access control models.

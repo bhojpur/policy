@@ -21,6 +21,8 @@ package cmd
 // THE SOFTWARE.
 
 import (
+	"fmt"
+
 	"github.com/bhojpur/policy/pkg/version"
 	"github.com/spf13/cobra"
 )
@@ -30,7 +32,7 @@ var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Prints the version of this Bhojpur Policy executable binary image",
 	Run: func(cmd *cobra.Command, args []string) {
-		version.Print()
+		fmt.Println("policysvr " + version.FullVersion())
 	},
 }
 
